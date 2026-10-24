@@ -1,0 +1,10 @@
+{
+  "name": "backdoored-demo",
+  "version": "1.0.0",
+  "description": "Synthetic backdoor-shaped fixture for Preflight scanner testing. Contains no real exfiltration.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node setup.js"
+  },
+  "license": "MIT"
+}

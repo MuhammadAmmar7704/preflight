@@ -1,0 +1,126 @@
+<mxfile host="app.diagrams.net" agent="preflight" version="24.0.0">
+  <diagram id="preflight-architecture" name="Architecture">
+    <mxGraphModel dx="1280" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Arrows first -->
+        <mxCell id="a1" edge="1" parent="1" source="cli" target="agent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="agent" target="dispatcher" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="tool call">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="dispatcher" target="agent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="dispatcher" target="tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="execute">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="tools" target="evidence" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="evidence">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" edge="1" parent="1" source="evidence" target="policy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="score">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="1" source="policy" target="verdict" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563eb;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="1" source="verdict" target="cli" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" edge="1" parent="1" source="tools" target="external" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;endArrow=block;endFill=1;fontFamily=Arial;fontSize=11;fontColor=#64748b;" value="calls">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Title -->
+        <mxCell id="title" value="Preflight" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontStyle=1;fontColor=#0f172a;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Gemma 4 tool-calling architecture for pre-install npm verification" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=15;fontColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry x="40" y="62" width="620" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- CLI -->
+        <mxCell id="cli" value="preflight.sh&#10;CLI + project context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Agent -->
+        <mxCell id="agent" value="Gemma 4 Agent&#10;plans · selects tools · reads results" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#93c5fd;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="110" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Dispatcher -->
+        <mxCell id="dispatcher" value="Tool Dispatcher&#10;schema + allowlist" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="125" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Tools -->
+        <mxCell id="tools" value="Tools" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#e2e8f0;dashed=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=#0f172a;spacingLeft=16;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="830" y="70" width="400" height="500" as="geometry" />
+        </mxCell>
+
+        <mxCell id="t1" value="get_target" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="850" y="120" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" value="get_project_usage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="120" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" value="resolve_versions" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="850" y="204" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="t4" value="verify_version" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="204" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="t5" value="check_vulnerabilities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="850" y="288" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="t6" value="detonate_version" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="288" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="t7" value="scan_transitive" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="850" y="372" width="170" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="t8" value="finalize" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="372" width="170" height="64" as="geometry" />
+        </mxCell>
+
+        <!-- Evidence -->
+        <mxCell id="evidence" value="Evidence Ledger&#10;facts · source · severity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=17;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="250" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Policy -->
+        <mxCell id="policy" value="Policy Engine&#10;hard gates · risk score" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=17;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="460" width="250" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Verdict -->
+        <mxCell id="verdict" value="Verdict&#10;SAFE / VULNERABLE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#166534;" vertex="1" parent="1">
+          <mxGeometry x="280" y="600" width="250" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- External -->
+        <mxCell id="external" value="External" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#e2e8f0;dashed=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#0f172a;spacingLeft=16;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="830" y="610" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="npm registry&#10;tarball" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="850" y="655" width="110" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="OSV&#10;advisories" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="975" y="655" width="110" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Docker&#10;sandbox" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#cbd5e1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="655" width="110" height="58" as="geometry" />
+        </mxCell>
+
+        <!-- Footer -->
+        <mxCell id="footer" value="Gemma proposes. Tools produce facts. Policy decides." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontColor=#94a3b8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="780" width="420" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

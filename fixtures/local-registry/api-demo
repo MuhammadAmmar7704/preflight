@@ -1,0 +1,24 @@
+{
+  "name": "api-demo",
+  "dist-tags": {
+    "latest": "2.0.0"
+  },
+  "versions": {
+    "1.0.0": {
+      "name": "api-demo",
+      "version": "1.0.0",
+      "main": "index.js",
+      "dist": {
+        "tarball": "http://127.0.0.1:8787/tarballs/api-demo-1.0.0.tgz"
+      }
+    },
+    "2.0.0": {
+      "name": "api-demo",
+      "version": "2.0.0",
+      "main": "index.js",
+      "dist": {
+        "tarball": "http://127.0.0.1:8787/tarballs/api-demo-2.0.0.tgz"
+      }
+    }
+  }
+}

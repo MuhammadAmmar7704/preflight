@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+  <title id="title">Preflight architecture</title>
+  <desc id="desc">Gemma 4 selects tools, tools produce evidence, and a policy engine returns a SAFE or VULNERABLE verdict.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="820" fill="#ffffff"/>
+
+  <text x="40" y="48" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Preflight</text>
+  <text x="40" y="76" font-family="Inter, Arial, sans-serif" font-size="15" fill="#64748b">Gemma 4 tool-calling architecture for pre-install npm verification</text>
+
+  <!-- CLI -->
+  <rect x="40" y="130" width="180" height="90" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="130" y="165" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a">preflight.sh</text>
+  <text x="130" y="190" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748b">CLI + project context</text>
+
+  <!-- Agent -->
+  <rect x="280" y="110" width="250" height="120" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="405" y="145" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Gemma 4 Agent</text>
+  <text x="405" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">plans · selects tools · reads results</text>
+  <text x="405" y="192" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">function calling · bounded loop</text>
+
+  <!-- Dispatcher -->
+  <rect x="590" y="125" width="180" height="90" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="680" y="158" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">Tool Dispatcher</text>
+  <text x="680" y="182" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748b">schema + allowlist</text>
+
+  <!-- Tools container -->
+  <rect x="830" y="70" width="400" height="500" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-dasharray="6 5"/>
+  <text x="850" y="100" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#0f172a">Tools</text>
+
+  <!-- tool row 1 -->
+  <rect x="850" y="120" width="170" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="935" y="148" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a">get_target</text>
+  <text x="935" y="168" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">runtime fingerprint</text>
+
+  <rect x="1040" y="120" width="170" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="1125" y="148" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a">get_project_usage</text>
+  <text x="1125" y="168" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">imports + symbols</text>
+
+  <!-- tool row 2 -->
+  <rect x="850" y="204" width="170" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="935" y="232" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a">resolve_versions</text>
+  <text x="935" y="252" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">newest → oldest</text>
+
+  <rect x="1040" y="204" width="170" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="1125" y="232" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a">verify_version</text>
+  <text x="1125" y="252" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">static + API + ELF</text>
+
+  <!-- tool row 3 -->
+  <rect x="850" y="288" width="170" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="935" y="316" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a">check_vulnerabilities</text>
+  <text x="935" y="336" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">OSV advisories</text>
+
+  <rect x="1040" y="288" width="170" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="1125" y="316" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a">detonate_version</text>
+  <text x="1125" y="336" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">Docker · no egress</text>
+
+  <!-- tool row 4 -->
+  <rect x="850" y="372" width="170" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="935" y="400" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a">scan_transitive</text>
+  <text x="935" y="420" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">node_modules tree</text>
+
+  <rect x="1040" y="372" width="170" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="1125" y="400" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#0f172a">finalize</text>
+  <text x="1125" y="420" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">status + reason</text>
+
+  <!-- Evidence -->
+  <rect x="280" y="320" width="250" height="90" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="405" y="355" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Evidence Ledger</text>
+  <text x="405" y="378" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748b">facts · source · severity</text>
+
+  <!-- Policy -->
+  <rect x="280" y="460" width="250" height="90" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="405" y="495" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Policy Engine</text>
+  <text x="405" y="518" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748b">hard gates · risk score</text>
+
+  <!-- Verdict -->
+  <rect x="280" y="600" width="250" height="80" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="405" y="635" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#166534">Verdict</text>
+  <text x="405" y="658" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#166534">SAFE  /  VULNERABLE</text>
+
+  <!-- External -->
+  <rect x="830" y="610" width="400" height="130" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-dasharray="6 5"/>
+  <text x="850" y="638" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#0f172a">External</text>
+  <rect x="850" y="655" width="110" height="58" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="905" y="680" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#0f172a">npm registry</text>
+  <text x="905" y="697" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#64748b">tarball</text>
+  <rect x="975" y="655" width="110" height="58" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="1030" y="680" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#0f172a">OSV</text>
+  <text x="1030" y="697" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#64748b">advisories</text>
+  <rect x="1100" y="655" width="110" height="58" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="1155" y="680" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#0f172a">Docker</text>
+  <text x="1155" y="697" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#64748b">sandbox</text>
+
+  <!-- Arrows -->
+  <line x1="220" y1="175" x2="274" y2="172" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="228" y="158" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">request</text>
+
+  <line x1="530" y1="165" x2="584" y2="163" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="536" y="150" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">tool call</text>
+
+  <line x1="584" y1="195" x2="530" y2="198" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-muted)"/>
+  <text x="536" y="216" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">result</text>
+
+  <line x1="770" y1="170" x2="824" y2="170" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="780" y="156" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">execute</text>
+
+  <path d="M830 330 C720 330 650 360 536 360" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="650" y="326" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">evidence</text>
+
+  <line x1="405" y1="410" x2="405" y2="454" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="414" y="436" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">score</text>
+
+  <line x1="405" y1="550" x2="405" y2="594" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="414" y="576" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">decision</text>
+
+  <path d="M280 640 C180 640 130 440 130 226" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-muted)"/>
+  <text x="164" y="472" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">status</text>
+
+  <path d="M1030 570 L1030 604" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-muted)"/>
+  <text x="1040" y="590" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748b">calls</text>
+
+  <text x="40" y="790" font-family="Inter, Arial, sans-serif" font-size="11" fill="#94a3b8">Gemma proposes. Tools produce facts. Policy decides.</text>
+</svg>

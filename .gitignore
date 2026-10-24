@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# secrets
+.env
+.env.*
+*.pem
+
+# logs and OS files
+*.log
+.DS_Store
+
+# local scratch
+tmp/
+
+# generated fixture archives
+fixtures/**/*.tgz
