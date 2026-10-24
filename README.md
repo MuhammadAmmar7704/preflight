@@ -107,9 +107,12 @@ If `GEMINI_API_KEY` is absent or the API is unavailable, the deterministic pipel
 With Gemma 4:
 
 ```bash
-export GEMINI_API_KEY="..."
+cp .env.example .env
+# add GEMINI_API_KEY to .env
 ./preflight.sh vm2@3.9.16
 ```
+
+`.env` is ignored by git. `GEMINI_API_KEY` can also be exported directly in the shell.
 
 Without a key, the deterministic pipeline runs. `--no-gemma` forces it.
 

@@ -7,6 +7,7 @@ dist/
 # secrets
 .env
 .env.*
+!.env.example
 *.pem
 
 # logs and OS files

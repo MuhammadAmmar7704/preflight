@@ -6,6 +6,14 @@ PROJECT_DIR="$(pwd)"
 PKG="${1:-}"
 MODE="${2:-status}"
 
+# Load local secrets without committing them.
+if [[ -f "$ROOT/.env" ]]; then
+  set -a
+  # shellcheck disable=SC1091
+  source "$ROOT/.env"
+  set +a
+fi
+
 if [[ -z "$PKG" || "$PKG" == "-h" || "$PKG" == "--help" ]]; then
   cat <<'EOF'
 Usage:
